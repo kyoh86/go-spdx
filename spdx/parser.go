@@ -7,13 +7,12 @@ import __yyfmt__ "fmt"
 
 //line parser.y:2
 import (
-	"fmt"
 	"io"
 	"strings"
 )
 
 type Expression interface {
-	fmt.Stringer
+	String() string
 	Expression() string
 	bracedIfNeeded() string
 }
@@ -51,26 +50,26 @@ func (a And) bracedIfNeeded() string {
 	return a.Expression()
 }
 
-type License string
+type LicenseID string
 
-func (l License) Expression() string {
+func (l LicenseID) Expression() string {
 	return string(l)
 }
 
-func (l License) String() string {
+func (l LicenseID) String() string {
 	return l.Expression()
 }
 
-func (l License) bracedIfNeeded() string {
+func (l LicenseID) bracedIfNeeded() string {
 	return string(l)
 }
 
-//line parser.y:65
+//line parser.y:64
 type yySymType struct {
 	yys      int
 	exp      Expression
 	operator string
-	license  License
+	license  LicenseID
 }
 
 const LICENSE = 57346
@@ -93,7 +92,7 @@ const yyEofCode = 1
 const yyErrCode = 2
 const yyInitialStackSize = 16
 
-//line parser.y:119
+//line parser.y:118
 type spdxLexer struct {
 	Lexer
 	err       error
@@ -124,7 +123,7 @@ func (s *spdxLexer) Lex(lval *yySymType) int {
 	case TokenTypeOperatorAnd:
 		return AND
 	case TokenTypeLicense:
-		lval.license = License(token.License)
+		lval.license = LicenseID(token.License)
 		return LICENSE
 	}
 	panic("invalid operation")
@@ -550,49 +549,49 @@ yydefault:
 
 	case 1:
 		yyDollar = yyS[yypt-1 : yypt+1]
-		//line parser.y:81
+		//line parser.y:80
 		{
-			yylex.(*spdxLexer).result = License(yyDollar[1].license)
+			yylex.(*spdxLexer).result = LicenseID(yyDollar[1].license)
 		}
 	case 2:
 		yyDollar = yyS[yypt-1 : yypt+1]
-		//line parser.y:85
+		//line parser.y:84
 		{
 			yylex.(*spdxLexer).result = yyDollar[1].exp
 		}
 	case 3:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line parser.y:91
+		//line parser.y:90
 		{
 			yyVAL.exp = Or{yyDollar[1].exp, yyDollar[3].exp}
 		}
 	case 4:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line parser.y:95
+		//line parser.y:94
 		{
 			yyVAL.exp = And{yyDollar[1].exp, yyDollar[3].exp}
 		}
 	case 5:
 		yyDollar = yyS[yypt-1 : yypt+1]
-		//line parser.y:101
+		//line parser.y:100
 		{
-			yyVAL.exp = License(yyDollar[1].license)
+			yyVAL.exp = LicenseID(yyDollar[1].license)
 		}
 	case 6:
 		yyDollar = yyS[yypt-1 : yypt+1]
-		//line parser.y:105
+		//line parser.y:104
 		{
 			yyVAL.exp = yyDollar[1].exp
 		}
 	case 7:
 		yyDollar = yyS[yypt-1 : yypt+1]
-		//line parser.y:109
+		//line parser.y:108
 		{
 			yyVAL.exp = yyDollar[1].exp
 		}
 	case 8:
 		yyDollar = yyS[yypt-3 : yypt+1]
-		//line parser.y:115
+		//line parser.y:114
 		{
 			yyVAL.exp = yyDollar[2].exp
 		}

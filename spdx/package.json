@@ -1,0 +1,10 @@
+{
+  "name": "spdx",
+  "version": "0.0.1",
+  "description": "manage SPDX license list",
+  "author": "Kyoichiro Yamada",
+  "license": "MIT",
+  "dependencies": {
+    "spdx-license-list": "^3.0.1"
+  }
+}

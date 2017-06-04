@@ -45,17 +45,17 @@ func (a And) bracedIfNeeded() string {
   return a.Expression()
 }
 
-type License string
+type LicenseID string
 
-func (l License) Expression() string {
+func (l LicenseID) Expression() string {
   return string(l)
 }
 
-func (l License) String() string {
+func (l LicenseID) String() string {
   return l.Expression()
 }
 
-func (l License) bracedIfNeeded() string {
+func (l LicenseID) bracedIfNeeded() string {
   return string(l)
 }
 
@@ -64,7 +64,7 @@ func (l License) bracedIfNeeded() string {
 %union{
   exp Expression
   operator string
-  license License
+  license LicenseID
 }
 
 %type<exp> spdx operation operand braced
@@ -78,7 +78,7 @@ func (l License) bracedIfNeeded() string {
 spdx:
   LICENSE
   {
-    yylex.(*spdxLexer).result = License($1)
+    yylex.(*spdxLexer).result = LicenseID($1)
   }
   | operation
   {
@@ -98,7 +98,7 @@ operation:
 operand:
   LICENSE
   {
-    $$ = License($1)
+    $$ = LicenseID($1)
   }
   | operation
   {
@@ -147,7 +147,7 @@ func (s *spdxLexer) Lex(lval *yySymType) int {
     case TokenTypeOperatorAnd:
       return AND
     case TokenTypeLicense:
-      lval.license = License(token.License)
+      lval.license = LicenseID(token.License)
       return LICENSE
   }
   panic("invalid operation")

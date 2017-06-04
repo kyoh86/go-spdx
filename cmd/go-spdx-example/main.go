@@ -12,4 +12,10 @@ func main() {
 		panic(err)
 	}
 	fmt.Println(tree)
+
+	mit, err := spdx.Get("MIT")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%#v\n", *mit)
 }
