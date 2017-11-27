@@ -19,7 +19,7 @@ vendor:
 	dep ensure
 
 example:
-	go run cmd/go-spdx-example/main.go
+	go run -tags=example cmd/go-spdx-example/main.go
 
 install:
 	go install ./...
