@@ -1,8 +1,7 @@
 y.output
 
-# Created by https://www.gitignore.io/api/go
+### https://raw.github.com/github/gitignore/fad779220742a6d54ccfc0c1a0e5b3d820253de6/Go.gitignore
 
-### Go ###
 # Binaries for programs and plugins
 *.exe
 *.dll
@@ -14,8 +13,3 @@ y.output
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
-
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
-.glide/
-
-# End of https://www.gitignore.io/api/go
