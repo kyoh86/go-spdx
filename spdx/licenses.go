@@ -41,3 +41,11 @@ func Get(id string) (*License, error) {
 	}
 	return &l, nil
 }
+
+// List will get valid licenses.
+func List() (licenses []License) {
+	for _, l := range validLicenses {
+		licenses = append(licenses, l)
+	}
+	return
+}
