@@ -14,6 +14,11 @@ type License struct {
 	Text        string `json:"licenseText"`
 }
 
+var (
+	validLicenses map[string]License
+	ErrorNotFound = errors.New("not found")
+)
+
 func init() {
 	licenses, err := licensesJsonBytes()
 	if err != nil {
@@ -27,11 +32,6 @@ func init() {
 		validLicenses[id] = l
 	}
 }
-
-var (
-	validLicenses map[string]License
-	ErrorNotFound = errors.New("not found")
-)
 
 // Get a license with an ID.
 func Get(id string) (*License, error) {
