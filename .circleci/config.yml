@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: go get
-          command: "go get ./..."
+          command: "go get -t ./..."
       - run:
           name: take a coverage
           command: "goverage -coverprofile=coverage.out ./..."
@@ -35,7 +35,7 @@ jobs:
       - checkout
       - run:
           name: go get
-          command: "go get ./..."
+          command: "go get -t ./..."
       - run:
           name: search lints
           command: "gometalinter --config /etc/gometalinter/config.json ./... > ./lints.txt || :"
