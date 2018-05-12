@@ -25,7 +25,7 @@ func TestParse(t *testing.T) {
 	t.Run("single-license", func(t *testing.T) {
 		exp, err := Parse("0BSD")
 		assert.NoError(t, err)
-		assert.Equal(t, License("0BSD"), exp)
+		assert.Equal(t, LicenseID("0BSD"), exp)
 	})
 
 	t.Run("simple-expression", func(t *testing.T) {
@@ -33,9 +33,9 @@ func TestParse(t *testing.T) {
 		assert.NoError(t, err)
 		require.IsType(t, Or{}, exp)
 		require.IsType(t, And{}, exp.(Or).Right)
-		assert.Equal(t, License("0BSD"), exp.(Or).Left)
-		assert.Equal(t, License("AAL"), exp.(Or).Right.(And).Left)
-		assert.Equal(t, License("Abstyles"), exp.(Or).Right.(And).Right)
+		assert.Equal(t, LicenseID("0BSD"), exp.(Or).Left)
+		assert.Equal(t, LicenseID("AAL"), exp.(Or).Right.(And).Left)
+		assert.Equal(t, LicenseID("Abstyles"), exp.(Or).Right.(And).Right)
 	})
 
 	t.Run("complex-expression", func(t *testing.T) {
@@ -64,14 +64,14 @@ func TestParse(t *testing.T) {
 		require.IsType(t, And{}, exp.(Or).Right.(And).Right.(Or).Right)
 		require.IsType(t, Or{}, exp.(Or).Right.(And).Right.(Or).Right.(And).Right)
 
-		assert.Equal(t, License("0BSD"), exp.(Or).Left.(Or).Left)
-		assert.Equal(t, License("AAL"), exp.(Or).Left.(Or).Right.(And).Left.(Or).Left)
-		assert.Equal(t, License("Abstyles"), exp.(Or).Left.(Or).Right.(And).Left.(Or).Right)
-		assert.Equal(t, License("Adobe-2006"), exp.(Or).Left.(Or).Right.(And).Right)
-		assert.Equal(t, License("Adobe-Glyph"), exp.(Or).Right.(And).Left)
-		assert.Equal(t, License("ADSL"), exp.(Or).Right.(And).Right.(Or).Left)
-		assert.Equal(t, License("AFL-1.1"), exp.(Or).Right.(And).Right.(Or).Right.(And).Left)
-		assert.Equal(t, License("AFL-1.2"), exp.(Or).Right.(And).Right.(Or).Right.(And).Right.(Or).Left)
-		assert.Equal(t, License("AFL-2.0"), exp.(Or).Right.(And).Right.(Or).Right.(And).Right.(Or).Right)
+		assert.Equal(t, LicenseID("0BSD"), exp.(Or).Left.(Or).Left)
+		assert.Equal(t, LicenseID("AAL"), exp.(Or).Left.(Or).Right.(And).Left.(Or).Left)
+		assert.Equal(t, LicenseID("Abstyles"), exp.(Or).Left.(Or).Right.(And).Left.(Or).Right)
+		assert.Equal(t, LicenseID("Adobe-2006"), exp.(Or).Left.(Or).Right.(And).Right)
+		assert.Equal(t, LicenseID("Adobe-Glyph"), exp.(Or).Right.(And).Left)
+		assert.Equal(t, LicenseID("ADSL"), exp.(Or).Right.(And).Right.(Or).Left)
+		assert.Equal(t, LicenseID("AFL-1.1"), exp.(Or).Right.(And).Right.(Or).Right.(And).Left)
+		assert.Equal(t, LicenseID("AFL-1.2"), exp.(Or).Right.(And).Right.(Or).Right.(And).Right.(Or).Left)
+		assert.Equal(t, LicenseID("AFL-2.0"), exp.(Or).Right.(And).Right.(Or).Right.(And).Right.(Or).Right)
 	})
 }
