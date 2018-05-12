@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: go get
-          command: "go get ./..."
+          command: "go get -t ./..."
       - run:
           name: go test
           command: "go test -race ./..."
