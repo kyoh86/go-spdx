@@ -97,6 +97,7 @@ func (s *Lexer) genOperatorTokenFrom(head int) (*Token, error) {
 	case "OR":
 		return &Token{Type: TokenTypeOperatorOr}, nil
 	default:
+		s.index = head
 		return nil, InvalidOperatorError(s.errorf("invalid operator %q", operator))
 	}
 }
