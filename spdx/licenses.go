@@ -21,11 +21,12 @@ var (
 )
 
 func init() {
-	licenses, err := licensesJsonBytes()
+	licenses, err := Assets.File("/json/licenses.json")
 	if err != nil {
 		panic(err)
 	}
-	if err := json.Unmarshal(licenses, &validLicenses); err != nil {
+	dec := json.NewDecoder(licenses)
+	if err := dec.Decode(&validLicenses); err != nil {
 		panic(err)
 	}
 	for id, l := range validLicenses {
