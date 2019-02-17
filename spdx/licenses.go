@@ -16,6 +16,7 @@ type License struct {
 
 var (
 	validLicenses map[string]License
+	// ErrorNotFound represents that an id for license is not valid
 	ErrorNotFound = errors.New("not found")
 )
 

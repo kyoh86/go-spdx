@@ -1,4 +1,4 @@
-.PHONY: default gen clean test setup example
+.PHONY: default gen clean test lint setup example
 
 default:
 	echo use gen, clean test, setup or example
@@ -11,6 +11,9 @@ clean:
 
 test:
 	go test ./...
+
+lint:
+	gometalinter ./...
 
 setup:
 	go get -u golang.org/x/tools/cmd/goyacc
