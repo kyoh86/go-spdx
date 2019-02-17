@@ -1,7 +1,7 @@
-.PHONY: default gen clean test vendor install
+.PHONY: default gen clean test setup example
 
 default:
-	echo use gen, test, vendor or install
+	echo use gen, clean test, setup or example
 
 gen:
 	$(MAKE) gen -C spdx
@@ -15,11 +15,5 @@ test:
 setup:
 	go get -u golang.org/x/tools/cmd/goyacc
 
-vendor:
-	dep ensure
-
 example:
 	go run -tags=example cmd/go-spdx-example/main.go
-
-install:
-	go install ./...
