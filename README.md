@@ -16,13 +16,8 @@ go get github.com/kyoh86/go-spdx
 
 See [example](https://github.com/kyoh86/go-spdx/blob/master/cmd/go-spdx-example/main.go) or [test](https://github.com/kyoh86/go-spdx/blob/master/spdx/parser_test.go)
 
-```
-go-spdx --help
-```
-
-## License
+# LICENSE
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg)](http://www.opensource.org/licenses/MIT)
 
 This is distributed under the [MIT License](http://www.opensource.org/licenses/MIT).
-

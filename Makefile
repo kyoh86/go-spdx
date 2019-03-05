@@ -1,22 +1,16 @@
-.PHONY: default gen clean test lint setup example
+.PHONY: gen lint test sample
 
-default:
-	echo use gen, clean test, setup or example
+VERSION := `git vertag get`
+COMMIT  := `git rev-parse HEAD`
 
 gen:
-	$(MAKE) gen -C spdx
+	go generate ./...
 
-clean:
-	$(MAKE) clean -C spdx
-
-test:
-	go test ./...
-
-lint:
+lint: gen
 	gometalinter ./...
 
-setup:
-	go get -u golang.org/x/tools/cmd/goyacc
+test: lint
+	go test v --race ./...
 
-example:
-	go run -tags=example cmd/go-spdx-example/main.go
+sample:
+	go run -tags=sample ./cmd/go-spdx-sample/main.go
