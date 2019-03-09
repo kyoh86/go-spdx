@@ -4,7 +4,7 @@ VERSION := `git vertag get`
 COMMIT  := `git rev-parse HEAD`
 
 gen:
-	go generate ./...
+	$(MAKE) gen -C spdx
 
 lint: gen
 	golangci-lint run
