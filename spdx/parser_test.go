@@ -28,6 +28,12 @@ func TestParse(t *testing.T) {
 		assert.Equal(t, LicenseID("0BSD"), exp)
 	})
 
+	t.Run("single-license-and-later", func(t *testing.T) {
+		exp, err := Parse("MPL-2.0+")
+		assert.NoError(t, err)
+		assert.Equal(t, LicenseID("MPL-2.0+"), exp)
+	})
+
 	t.Run("simple-expression", func(t *testing.T) {
 		exp, err := Parse("0BSD OR AAL AND Abstyles")
 		assert.NoError(t, err)

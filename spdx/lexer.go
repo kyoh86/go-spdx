@@ -3,6 +3,7 @@ package spdx
 import (
 	"fmt"
 	"io"
+	"strings"
 )
 
 // Lexer will parse expressions and get all tokens from it.
@@ -104,8 +105,12 @@ func (s *Lexer) genOperatorTokenFrom(head int) (*Token, error) {
 
 func (s *Lexer) genLicenseTokenFrom(head int) (*Token, error) {
 	license := string(s.expression[head:s.index])
+
+	// remove the + operator if any
+	baseLicense := strings.TrimRight(license, "+")
+
 	s.isOperator = true
-	if _, ok := validLicenses[license]; !ok {
+	if _, ok := validLicenses[baseLicense]; !ok {
 		s.index = head
 		return nil, InvalidLicenseError(s.errorf("invalid license %q", license))
 	}
