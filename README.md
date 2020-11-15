@@ -15,7 +15,7 @@ go get github.com/kyoh86/go-spdx
 
 ## Usage
 
-See [example](https://github.com/kyoh86/go-spdx/blob/master/cmd/go-spdx-example/main.go) or [test](https://github.com/kyoh86/go-spdx/blob/master/spdx/parser_test.go)
+See [example](https://github.com/kyoh86/go-spdx/blob/main/cmd/go-spdx-example/main.go) or [test](https://github.com/kyoh86/go-spdx/blob/main/spdx/parser_test.go)
 
 # LICENSE
 
