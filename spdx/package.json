@@ -5,6 +5,6 @@
   "author": "Kyoichiro Yamada",
   "license": "MIT",
   "dependencies": {
-    "spdx-license-list": "^3.0.1"
+    "spdx-license-list": "^6.5.0"
   }
 }

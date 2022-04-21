@@ -28,6 +28,12 @@ func TestParse(t *testing.T) {
 		assert.Equal(t, LicenseID("0BSD"), exp)
 	})
 
+	t.Run("single-license-lgpl-or-later", func(t *testing.T) {
+		exp, err := Parse("LGPL-3.0-or-later")
+		assert.NoError(t, err)
+		assert.Equal(t, LicenseID("LGPL-3.0-or-later"), exp)
+	})
+
 	t.Run("single-license-and-later", func(t *testing.T) {
 		exp, err := Parse("MPL-2.0+")
 		assert.NoError(t, err)

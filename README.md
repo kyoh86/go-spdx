@@ -17,6 +17,18 @@ go get github.com/kyoh86/go-spdx
 
 See [example](https://github.com/kyoh86/go-spdx/blob/main/cmd/go-spdx-example/main.go) or [test](https://github.com/kyoh86/go-spdx/blob/main/spdx/parser_test.go)
 
+## Updating licenses
+
+In order to update the licenses_asset.go file with the newest license list from SPDX, execute the following commands:
+
+```
+cd spdx
+npm install spdx-license-list@latest
+make licenses-asset
+```
+
+(You should also add a test to spdx/parser_test.go to make sure everything worked as expected.)
+
 # LICENSE
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg)](http://www.opensource.org/licenses/MIT)
