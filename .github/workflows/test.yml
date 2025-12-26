@@ -63,7 +63,7 @@ jobs:
           path: .
       - name: take coverage
         run: go test -coverprofile=coverage.txt -covermode=count ./...
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
           files: coverage.txt
